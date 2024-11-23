@@ -10,7 +10,7 @@ export const loggingRedactPaths = [
   'req.body.refreshToken',
   'req.body.email',
   'req.body.password',
-  'req.body.oldPassword'
+  'req.body.oldPassword',
 ]
 
 export enum LogService {

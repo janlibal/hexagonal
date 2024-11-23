@@ -6,6 +6,4 @@ export class CreateUserDto {
 
   @ApiProperty({ example: 'Doe', type: String })
   readonly lastName: string
-
- 
 }

@@ -10,7 +10,6 @@ import { Logger, LoggerErrorInterceptor, PinoLogger } from 'nestjs-pino'
 import { ConfigService } from '@nestjs/config'
 import { AllConfigType } from './global/config/config.type'
 
-
 async function bootstrap() {
   const app = await NestFactory.create(GlobalModule)
 
@@ -20,7 +19,7 @@ async function bootstrap() {
   app.useLogger(app.get(Logger))
 
   const logger = await app.resolve(PinoLogger)
-  
+
   app.useGlobalPipes(new ValidationPipe(validationOptions))
 
   app.useGlobalFilters(new AnyExceptionFilter(), new HttpExceptionFilter())

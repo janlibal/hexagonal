@@ -1,25 +1,26 @@
-import { Injectable, NestMiddleware, UnauthorizedException } from '@nestjs/common';
-import { NextFunction, Response, Request } from 'express';
-import UnauthorizedError from 'src/exceptions/unauthorized.exception';
-
+import {
+  Injectable,
+  NestMiddleware,
+  UnauthorizedException,
+} from '@nestjs/common'
+import { NextFunction, Response, Request } from 'express'
+import UnauthorizedError from 'src/exceptions/unauthorized.exception'
 
 @Injectable()
 export class AuthMiddleware implements NestMiddleware {
-
   public async use(req: Request, _: Response, next: NextFunction) {
-    
     const authorization = req.headers.authorization
 
-    if (!authorization ||Array.isArray(authorization) || typeof authorization !== 'string'
+    if (
+      !authorization ||
+      Array.isArray(authorization) ||
+      typeof authorization !== 'string'
     )
       throw new UnauthorizedError('Invalid Headers')
 
     const [jwt, accessToken] = authorization.split(' ')
 
-    if (jwt !== 'jwt')
-    throw new UnauthorizedError('No jwt')
-
-    
+    if (jwt !== 'jwt') throw new UnauthorizedError('No jwt')
 
     /*     
     //verify token using jwt service
@@ -42,7 +43,6 @@ export class AuthMiddleware implements NestMiddleware {
 
     request.user = decodedToken*/
 
-
-    next();
+    next()
   }
 }

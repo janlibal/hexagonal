@@ -1,8 +1,8 @@
-import { Ticket } from "../model/ticket.model";
+import { Ticket } from '../model/ticket.model'
 
- export interface TicketRepository {
-  create(ticket: Ticket): Ticket;
-  findAll(): Ticket[];
+export interface TicketRepository {
+  create(ticket: Ticket): Ticket
+  findAll(): Ticket[]
 }
- 
-export const TicketRepository = Symbol('TicketRepository');
+
+export const TicketRepository = Symbol('TicketRepository')

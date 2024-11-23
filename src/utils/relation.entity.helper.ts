@@ -1,14 +1,13 @@
-import { instanceToPlain } from 'class-transformer';
+import { instanceToPlain } from 'class-transformer'
 
-export class EntityRelationalHelper  {
-  __entity?: string;
+export class EntityRelationalHelper {
+  __entity?: string
 
-  
   setEntityName() {
-    this.__entity = this.constructor.name;
+    this.__entity = this.constructor.name
   }
 
   toJSON() {
-    return instanceToPlain(this);
+    return instanceToPlain(this)
   }
 }

@@ -1,6 +1,6 @@
-import { Inject, Injectable } from '@nestjs/common';
-import { TicketRepository } from './ticket.repository';
-import { Ticket } from '../model/ticket.model';
+import { Inject, Injectable } from '@nestjs/common'
+import { TicketRepository } from './ticket.repository'
+import { Ticket } from '../model/ticket.model'
 
 @Injectable()
 export class TicketService {
@@ -10,20 +10,20 @@ export class TicketService {
   ) {}
 
   create(description: string, priority: Number): Ticket {
-    const ticket = new Ticket(description, priority);
+    const ticket = new Ticket(description, priority)
     // TODO: check count of tickets less than 3
     if (this.findActiveTickets().length >= 3) {
-      throw new Error('Ticket count is more than 3');
+      throw new Error('Ticket count is more than 3')
     }
-    this.tickerRepository.create(ticket);
-    return ticket;
+    this.tickerRepository.create(ticket)
+    return ticket
   }
 
   findAll(): Ticket[] {
-    return this.tickerRepository.findAll();
+    return this.tickerRepository.findAll()
   }
 
   findActiveTickets(): Ticket[] {
-    return this.tickerRepository.findAll().filter((ticket) => !ticket.isClosed);
+    return this.tickerRepository.findAll().filter((ticket) => !ticket.isClosed)
   }
 }

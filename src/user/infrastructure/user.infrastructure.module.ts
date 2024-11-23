@@ -1,7 +1,6 @@
-import { Module } from '@nestjs/common';
-import { UsersAdapterRepository } from './adapter/user.adapter';
-import { UserPortRepository } from './port/user.port';
-
+import { Module } from '@nestjs/common'
+import { UsersAdapterRepository } from './adapter/user.adapter'
+import { UserPortRepository } from './port/user.port'
 
 @Module({
   imports: [],

@@ -1,20 +1,24 @@
 import { Module, RequestMethod } from '@nestjs/common'
 import { ConfigModule } from '@nestjs/config'
 import { Logger, LoggerModule } from 'nestjs-pino'
-import { configSetup } from 'src/config/config.setup';
-import { loggerSetuo } from 'src/logger/logger.setup';
-import { MiddlewareConsumer, NestModule, RouteInfo } from '@nestjs/common/interfaces';
-import { AuthMiddleware } from 'src/middleware/auth.middleware';
-import { TicketModule } from 'src/ticket/ticket.module';
-import { UsersModule } from 'src/user/user.module';
-
+import { configSetup } from 'src/config/config.setup'
+import { loggerSetuo } from 'src/logger/logger.setup'
+import {
+  MiddlewareConsumer,
+  NestModule,
+  RouteInfo,
+} from '@nestjs/common/interfaces'
+import { AuthMiddleware } from 'src/middleware/auth.middleware'
+import { TicketModule } from 'src/ticket/ticket.module'
+import { UsersModule } from 'src/user/user.module'
 
 @Module({
-  imports: 
-  [ConfigModule.forRoot(configSetup),
-  LoggerModule.forRootAsync(loggerSetuo),
-  TicketModule,
-UsersModule], //[AppModule, EmployeeModule, UserModule, NoteModule],
+  imports: [
+    ConfigModule.forRoot(configSetup),
+    LoggerModule.forRootAsync(loggerSetuo),
+    TicketModule,
+    UsersModule,
+  ], //[AppModule, EmployeeModule, UserModule, NoteModule],
   controllers: [],
   providers: [Logger],
 })
