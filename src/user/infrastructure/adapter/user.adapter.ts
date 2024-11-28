@@ -7,15 +7,29 @@ import { UserMapper } from '../mappers/user.mapper'
 @Injectable()
 export class UsersAdapterRepository implements UserPortRepository {
   async create(data: User): Promise<User> {
+    const persistenceModel = await UserMapper.toPersistence2(data)
+
+    const prisma = {
+      firstName: persistenceModel.firstName,
+      lastName: persistenceModel.lastName,
+    }
+
+    return UserMapper.toDomain2(prisma)
+  }
+}
+
+
+/*
+
+async create(data: User): Promise<User> {
     const persistenceModel = UserMapper.toPersistence(data)
 
     const repo = {
-      firstName: data.firstName,
-      lastName: data.lastName,
+      firstName: persistenceModel.firstName,
+      lastName: persistenceModel.lastName,
     }
 
-    const newEntity = repo
-
-    return UserMapper.toDomain(persistenceModel)
+    return UserMapper.toDomain(repo)
   }
-}
+
+  */
