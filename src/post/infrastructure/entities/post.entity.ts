@@ -1,12 +1,10 @@
 import { Exclude } from 'class-transformer'
 import { EntityRelationalHelper } from '../../../utils/relation.entity.helper'
 
-export class UserEntity {
+
+export class PostEntity extends EntityRelationalHelper {
   @Exclude()
-  firstName: string | null
+  title: string
   @Exclude()
-  lastName: string | null
+  content: string | null
 }
-
-
-

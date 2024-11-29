@@ -3,34 +3,18 @@ import { UserEntity } from '../entities/user.entity'
 
 
 export class UserMapper {
-  static toDomain(raw: UserEntity): User {
-    const domainEntity = new User()
-    domainEntity.firstName = raw.firstName
-    domainEntity.lastName = raw.lastName
-
-    return domainEntity
-  }
-
-  static toPersistence(domainEntity: User): UserEntity {
-    const persistenceEntity = new UserEntity()
-    persistenceEntity.firstName = domainEntity.firstName
-    persistenceEntity.lastName = domainEntity.lastName
-
-    return persistenceEntity
-  }
-
-  static async toDomain2(entity: UserEntity): Promise<User> {
+  static async toDomain(raw: UserEntity): Promise<User> {
     const domainEntity: User = {
-        firstName: entity.firstName,
-        lastName: entity.lastName
+        firstName: raw.firstName,
+        lastName: raw.lastName
     }
     return domainEntity
   }
 
-  static async toPersistence2(entity: User): Promise<UserEntity> {
+  static async toPersistence(domainEntity: User): Promise<UserEntity> {
     const persistenceEntity : UserEntity = {
-        firstName: entity.firstName,
-        lastName: entity.firstName
+        firstName: domainEntity.firstName,
+        lastName: domainEntity.firstName
     }
 
     return persistenceEntity
