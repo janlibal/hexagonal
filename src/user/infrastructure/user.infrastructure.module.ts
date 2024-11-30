@@ -1,15 +1,15 @@
 import { Module } from '@nestjs/common'
-import { UsersAdapterRepository } from './adapter/user.adapter'
-import { UserPortRepository } from './port/user.port'
+import { UsersPersistence } from './persistence/user.persistence'
+import { UserRepository } from './repositories/user.repository'
 
 @Module({
   imports: [],
   providers: [
     {
-      provide: UserPortRepository,
-      useClass: UsersAdapterRepository,
+      provide: UserRepository,
+      useClass: UsersPersistence,
     },
   ],
-  exports: [UserPortRepository],
+  exports: [UserRepository],
 })
 export class UserPersistenceModule {}
