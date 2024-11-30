@@ -11,10 +11,10 @@ export class UserMapper {
     return domainEntity
   }
 
-  static async toPersistence(domainEntity: User): Promise<UserEntity> {
+  static async toPersistence(data: User): Promise<UserEntity> {
     const persistenceEntity : UserEntity = {
-        firstName: domainEntity.firstName,
-        lastName: domainEntity.firstName
+        firstName: data.firstName,
+        lastName: data.lastName
     }
 
     return persistenceEntity

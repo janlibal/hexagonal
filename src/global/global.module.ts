@@ -11,6 +11,7 @@ import {
 import { AuthMiddleware } from 'src/middleware/auth.middleware'
 import { TicketModule } from 'src/ticket/ticket.module'
 import { UsersModule } from 'src/user/user.module'
+import { PostModule } from 'src/post/post.module'
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { UsersModule } from 'src/user/user.module'
     LoggerModule.forRootAsync(loggerSetuo),
     TicketModule,
     UsersModule,
+    PostModule
   ], //[AppModule, EmployeeModule, UserModule, NoteModule],
   controllers: [],
   providers: [Logger],

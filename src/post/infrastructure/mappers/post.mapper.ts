@@ -11,10 +11,10 @@ export class PostMapper {
     return domainEntity
   }
 
-  static toPersistence(domainEntity: Post): PostEntity {
+  static toPersistence(data: Post): PostEntity {
     const persistenceEntity = new PostEntity()
-    persistenceEntity.title = domainEntity.title
-    persistenceEntity.content = domainEntity.content
+    persistenceEntity.title = data.title
+    persistenceEntity.content = data.content
 
     return persistenceEntity
   }

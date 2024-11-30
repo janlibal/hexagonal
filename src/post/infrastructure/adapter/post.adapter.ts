@@ -9,11 +9,11 @@ export class PostAdapterRepository implements PostPortRepository {
   async create(data: Post): Promise<Post> {
     const persistenceModel = PostMapper.toPersistence(data)
 
-    const repository = {
+    const newEntity = {
       title: persistenceModel.title,
       content: persistenceModel.content,
     }
 
-    return PostMapper.toDomain(repository)
+    return PostMapper.toDomain(newEntity)
   }
 }
